@@ -68,6 +68,27 @@ function displayArmor(id) {
         id,
       [],
       function(tx, results) {
+        if (results.rows.item(0).No_Slot_1_Rank == 'undefined') {
+          slot1 = 0;
+        } else {
+          slot1 = results.rows.item(0).No_Slot_1_Rank;
+        }
+        if (results.rows.item(0).No_Slot_2_Rank == 'undefined') {
+          slot2 = 0;
+        } else {
+          slot2 = results.rows.item(0).No_Slot_2_Rank;
+        }
+        if (results.rows.item(0).No_Slot_3_Rank == 'undefined') {
+          slot3 = 0;
+        } else {
+          slot3 = results.rows.item(0).No_Slot_3_Rank;
+        }
+        if (results.rows.item(0).No_Slot_4_Rank == 'undefined') {
+          slot4 = 0;
+        } else {
+          slot4 = results.rows.item(0).No_Slot_4_Rank;
+        }
+
         if (results.rows.item(0).Txt_ImageMale != null) {
           image = results.rows.item(0).Txt_ImageMale;
         } else if (results.rows.item(0).Txt_ImageFemale != null) {
@@ -98,24 +119,10 @@ function displayArmor(id) {
           'thunder: ' + results.rows.item(0).No_thunder_resistance;
         document.getElementById('dragon').innerHTML =
           'dragon: ' + results.rows.item(0).No_dragon_resistance;
-        document.getElementById('slot0').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
-        document.getElementById('slot1').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
-        document.getElementById('slot2').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
-        document.getElementById('slot3').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
-        document.getElementById('skill').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
-        document.getElementById('set').innerHTML = results.rows.item(
-          0
-        ).Txt_Type;
+        document.getElementById('slot0').innerHTML = slot1;
+        document.getElementById('slot1').innerHTML = slot2;
+        document.getElementById('slot2').innerHTML = slot3;
+        document.getElementById('slot3').innerHTML = slot4;
       }
     );
   }, null);

@@ -17,7 +17,7 @@ function init(IntervalUpdateInD, callback) {
       executionKO
     );
     tx.executeSql(
-      'CREATE TABLE IF NOT EXISTS Tbl_Armor (Id_Armor integer primary key, Txt_Name text , Txt_Type text , Nb_Rarity integer , No_BaseDefence integer , No_MaxDefence integer , No_AugmentedDefence integer , No_fire_resistance integer , No_water_resistance integer , No_ice_resistance integer , No_thunder_resistance integer , No_dragon_resistance integer  ,Id_ArmorSet integer, Txt_ImageMale text , Txt_ImageFemale text )',
+      'CREATE TABLE IF NOT EXISTS Tbl_Armor (Id_Armor integer primary key, Txt_Name text , Txt_Type text , Nb_Rarity integer , No_BaseDefence integer , No_MaxDefence integer , No_AugmentedDefence integer , No_fire_resistance integer , No_water_resistance integer , No_ice_resistance integer , No_thunder_resistance integer , No_dragon_resistance integer  ,Id_ArmorSet integer, Txt_ImageMale text , Txt_ImageFemale text, No_Slot_1_Rank integer, No_Slot_2_Rank integer, No_Slot_3_Rank integer, No_Slot_4_Rank integer )',
       null,
       null,
       executionKO
@@ -190,6 +190,10 @@ function fetchArmor(callback) {
         armor_res_ice = armor.resistances.ice;
         armor_res_thunder = armor.resistances.thunder;
         armor_res_dragon = armor.resistances.dragon;
+        armor_slot1 = armor.slots[0];
+        armor_slot2 = armor.slots[1];
+        armor_slot3 = armor.slots[2];
+        armor_slot4 = armor.slots[3];
         if (armor.armorSet != null) {
           armor_set = armor.armorSet.id;
         } else {
@@ -224,7 +228,11 @@ function fetchArmor(callback) {
           armor_res_dragon,
           armor_set,
           armor_male,
-          armor_female
+          armor_female,
+          armor_slot1,
+          armor_slot2,
+          armor_slot3,
+          armor_slot4
         );
         //insertArmorSkill(data[i]);
       }
@@ -251,11 +259,15 @@ function insertArmor(
   armor_res_dragon,
   armor_set,
   armor_male,
-  armor_female
+  armor_female,
+  armor_slot1,
+  armor_slot2,
+  armor_slot3,
+  armor_slot4
 ) {
   db.transaction(function(tx) {
     tx.executeSql(
-      'INSERT INTO Tbl_Armor (Txt_Name, Txt_Type, Nb_Rarity, No_BaseDefence, No_MaxDefence, No_AugmentedDefence, No_fire_resistance, No_water_resistance, No_ice_resistance, No_thunder_resistance, No_dragon_resistance, Id_ArmorSet, Txt_ImageMale, Txt_ImageFemale) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO Tbl_Armor (Txt_Name, Txt_Type, Nb_Rarity, No_BaseDefence, No_MaxDefence, No_AugmentedDefence, No_fire_resistance, No_water_resistance, No_ice_resistance, No_thunder_resistance, No_dragon_resistance, Id_ArmorSet, Txt_ImageMale, Txt_ImageFemale, No_Slot_1_Rank, No_Slot_2_Rank, No_Slot_3_Rank, No_Slot_4_Rank) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )',
       [
         armor_name,
         armor_type,
@@ -270,7 +282,11 @@ function insertArmor(
         armor_res_dragon,
         armor_set,
         armor_male,
-        armor_female
+        armor_female,
+        armor_slot1,
+        armor_slot2,
+        armor_slot3,
+        armor_slot4
       ],
       null,
       executionKO
