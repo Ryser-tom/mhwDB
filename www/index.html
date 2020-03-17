@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#2196f3" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>MHW dataBase</title>
+
+    <link rel="stylesheet" href="framework7/css/framework7.bundle.min.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Status bar overlay for fullscreen mode-->
+      <div class="statusbar"></div>
+      <!-- Left panel with cover effect-->
+      <div class="panel panel-left panel-cover theme-dark">
+        <div class="view">
+          <div class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="title">Menus</div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="list simple-list">
+                <ul>
+                  <li><a class="panel-close" href="/">Armor</a></li>
+                  <li>
+                    <a class="link panel-close" href="/weapons/">Weapon</a>
+                  </li>
+                  <li>
+                    <a class="link panel-close" href="/items/">Item</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main safe-areas">
+        <!-- Page, data-name contains page name which can be used in callbacks -->
+        <div class="page" data-name="home">
+          <!-- Top Navbar -->
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left">
+                <a href="#" class="link icon-only panel-open" data-panel="left">
+                  <i class="icon f7-icons ios-only">menu</i>
+                  <i class="icon material-icons md-only">menu</i>
+                </a>
+              </div>
+              <div class="title sliding">MHW - Armor</div>
+              <div class="subnavbar">
+                <!-- Searchbar with auto init -->
+                <form class="searchbar">
+                  <div class="searchbar-inner">
+                    <div class="searchbar-input-wrap">
+                      <input type="search" placeholder="Search" />
+                      <i class="searchbar-icon"></i>
+                      <span class="input-clear-button"></span>
+                    </div>
+                    <span class="searchbar-disable-button if-not-aurora"
+                      >Cancel</span
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Scrollable page content-->
+          <div class="page-content">
+            <div id="container">
+              <div class="searchbar-backdrop"></div>
+              <div class="list searchbar-found">
+                <ul id="armors-list">
+                  <h2>Loading... Please wait.</h2>
+                </ul>
+              </div>
+              <!-- Nothing found message -->
+              <div class="block searchbar-not-found">
+                <div class="block-inner">Nothing found</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cordova -->
+    <script src="cordova.js"></script>
+
+    <!-- Framework7 library -->
+    <script src="framework7/js/framework7.bundle.min.js"></script>
+
+    <!-- App routes -->
+    <script src="js/routes.js"></script>
+
+    <!-- CDN for Jquery -->>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Your custom app scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/plugin.js"></script>
+  </body>
+</html>
